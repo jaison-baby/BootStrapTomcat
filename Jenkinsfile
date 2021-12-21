@@ -31,25 +31,25 @@ pipeline {
           }
         }
      
-#  stage('Publish image to Docker Hub') {
-#          
-#            steps {
-#        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-#          sh  'docker push nikhilnidhi/samplewebapp:latest'
-#        //  sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
-#        }
-#                  
-#          }
-#        }
+//  stage('Publish image to Docker Hub') {
+//          
+//            steps {
+//        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+//          sh  'docker push nikhilnidhi/samplewebapp:latest'
+//        //  sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
+//        }
+//                  
+//          }
+//        }
      
-#      stage('Run Docker container on Jenkins Agent') {
-#             
-#            steps 
-#			{
-#                sh "docker run -d -p 8003:8080 nikhilnidhi/samplewebapp"
-# 
-#            }
-#        }
+//      stage('Run Docker container on Jenkins Agent') {
+//             
+//            steps 
+//			{
+//                sh "docker run -d -p 8003:8080 nikhilnidhi/samplewebapp"
+// 
+//            }
+//        }
  stage('Run Docker container on remote hosts') {
              
             steps {
