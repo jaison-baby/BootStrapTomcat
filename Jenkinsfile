@@ -53,7 +53,11 @@ pipeline {
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker -H ssh://`ubuntu@3.21.210.44 run -d -p 8080:8080 nikhilnidhi/samplewebapp"
+                 script {
+                    withCredentials([sshUserPrivateKey(credentialsId: 'Jenkins-user', keyFileVariable: 'SSH_KEY')]) {
+                    sh 'scp -i \${SSH_KEY} -v -o StrictHostKeyChecking=no -r /home/ubuntu/tomcat/CI-CD-using-Docker/target/LoginWebApp-1.war  ubuntu@34.121.68.53: /home/ubuntu/tomcat/CI-CD-using-Docker/target/LoginWebApp-1.war' }
+sh “docker-compose up -d ”
+                    }
  
             }
         }
