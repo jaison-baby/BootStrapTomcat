@@ -17,7 +17,6 @@ pipeline {
           }
           steps {
                 
-                sh “./etc/profile.d/maven.sh”
                 sh "mvn clean install"
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'b2fba6f9-e9e7-4198-9ac7-8c3d8a4a4645', keyFileVariable: 'SSH_KEY')]) {
