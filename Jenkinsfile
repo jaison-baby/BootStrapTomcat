@@ -16,8 +16,6 @@ pipeline {
                   }
           }
           steps {
-                sh “source /etc/profile.d/maven.sh”
-                sh "mvn clean install"
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'ubuntu', keyFileVariable: 'SSH_KEY')]) {
                     sh 'scp -i \${SSH_KEY} -v -o StrictHostKeyChecking=no -r /var/lib/jenkins/workspace/NewDocker_main@2/target/LoginWebApp-1.war ubuntu@3.21.210.44:/home/ubuntu/latest/BootStrapTomcat/target/' }
