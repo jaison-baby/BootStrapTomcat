@@ -14,7 +14,7 @@ pipeline {
                 sh “source /etc/profile.d/maven.sh”
                 sh "mvn clean install"
                 script {
-                    withCredentials([sshUserPrivateKey(credentialsId: 'Jenkins-user', keyFileVariable: 'SSH_KEY')]) {
+                    withCredentials([sshUserPrivateKey(credentialsId: 'ubuntu', keyFileVariable: 'SSH_KEY')]) {
                     sh 'scp -i \${SSH_KEY} -v -o StrictHostKeyChecking=no -r /home/ubuntu/nexus-backend/target/spring-boilerplate-1.0.0.war ubuntu@34.121.68.53: /home/ubuntu/livespace-dev/livespace-app/' }
 sh “docker-compose up -d && docker-compose restart livespace-app”
                     }
