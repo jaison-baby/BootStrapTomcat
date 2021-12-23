@@ -1,11 +1,5 @@
 pipeline {
     agent any
-    triggers {
-        githubPush()
-    }
-    options {
-        buildDiscarder(logRotator(numToKeepStr: "10"))
-    }
     stages {
         stage('Build') {
           when{ branch 'main' }
