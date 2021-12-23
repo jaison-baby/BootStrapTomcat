@@ -11,7 +11,7 @@ pipeline {
           when{ branch 'main' }
           agent{
                   docker {
-                      image 'maven:3.6.3'
+                      image 'maven'
                       args '--user 0:0'
                   }
           }
