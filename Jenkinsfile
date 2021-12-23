@@ -20,8 +20,8 @@ pipeline {
                 sh "mvn clean install"
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'ubuntu', keyFileVariable: 'SSH_KEY')]) {
-                    sh 'scp -i \${SSH_KEY} -v -o StrictHostKeyChecking=no -r /home/ubuntu/nexus-backend/target/spring-boilerplate-1.0.0.war ubuntu@34.121.68.53: /home/ubuntu/livespace-dev/livespace-app/' }
-sh “docker-compose up -d && docker-compose restart livespace-app”
+                    sh 'scp -i \${SSH_KEY} -v -o StrictHostKeyChecking=no -r /var/lib/jenkins/workspace/NewDocker_main@2/target/LoginWebApp-1.war ubuntu@3.21.210.44:/home/ubuntu/latest/BootStrapTomcat/target/' }
+sh “docker-compose up -d”
                     }
                 }
     }
