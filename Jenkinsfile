@@ -19,7 +19,7 @@ pipeline {
                 
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'b2fba6f9-e9e7-4198-9ac7-8c3d8a4a4645', keyFileVariable: 'SSH_KEY')]) {
-                    sh 'scp -i \${SSH_KEY} -v -o StrictHostKeyChecking=no -r /var/lib/jenkins/workspace/NewDocker_main@2/target/LoginWebApp-1.war root@3.21.210.44:/home/ubuntu/latest/BootStrapTomcat/target/' }
+                    sh 'cd /home/ubuntu/latest/BootStrapTomcat/target/' }
 sh “docker-compose up -d”
                     }
                 }
